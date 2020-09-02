@@ -2,6 +2,7 @@
 # Credenciales:
 * email:andres@mail.com 
 * password: afqd
+
 Una vez realice el LogIn será redirigido a: https://taskplannerproject.herokuapp.com/tasks
 
 
