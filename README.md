@@ -1,3 +1,12 @@
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://taskplannerproject.herokuapp.com/)
+# Credenciales:
+* email:andres@mail.com 
+* password: afqd
+Una vez realice el LogIn será redirigido a: https://taskplannerproject.herokuapp.com/tasks
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
