@@ -13,70 +13,71 @@ import Link from '@material-ui/core/Link';
 import './Login.css';
 
 
-export default class Login extends React.Component{
+export default class Login extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state ={email:"",password:""};
-        this.handleUserEmail = this.handleUserEmail.bind(this);
-        this.handleUserPassword = this.handleUserPassword.bind(this);
+        this.state = { email: '', password: '', redirect: '/', isLoggedIn: false };
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    render(){
+    render() {
         return (
-            <div>
-                <React.Fragment>
-                    <CssBaseline />
-                    <main className="layout" onSubmit={this.handleSubmit}>
-                        <Paper className="paper">
-                            <Avatar className="avatar">
-                                <LockIcon />
-                            </Avatar>
-                            <Typography variant="h3">Task Planner</Typography>
-                            <form className="form" >
-                                <FormControl margin="normal" required fullWidth>
-                                    <InputLabel htmlFor="email">Email Address</InputLabel>
-                                    <Input
-                                    id="email" 
-                                    name="email" 
-                                    autoComplete="email" 
-                                    value = {this.state.email}
-                                    onChange = {this.handleUserEmail}
-                                    autoFocus />
-                                </FormControl>
-                                <FormControl margin="normal" required fullWidth>
-                                    <InputLabel htmlFor="password">Password</InputLabel>
-                                    <Input
-                                        name="password"
-                                        type="password"
-                                        id="password"
-                                        autoComplete="current-password"
-                                        value = {this.state.password}
-                                        onChange = {this.handleUserPassword}
-                                        autoFocus
 
-                                    />
-                                </FormControl>
+            <React.Fragment>
+                <CssBaseline />
+                <main className="layout">
+                    <Paper className="paper">
+                        <Avatar className="avatar">
+                            <LockIcon />
+                        </Avatar>
+                        <Typography variant="h3">Task Planner</Typography>
+                        <form onSubmit={this.handleSubmit} className="form" >
+                            <FormControl margin="normal" required fullWidth>
+                                <InputLabel htmlFor="email">Email</InputLabel>
+                                <Input
+                                    id="email"
+                                    name="email"
+                                    autoComplete="email"
+                                    value={this.state.email}
+                                    onChange={this.handleEmailChange}
+                                    autoFocus />
+                            </FormControl>
+                            <FormControl margin="normal" required fullWidth>
+                                <InputLabel htmlFor="password">Password</InputLabel>
+                                <Input required
+                                    name="password"
+                                    type="password"
+                                    id="password"
+                                    autoComplete="current-password"
+                                    value={this.state.password}
+                                    onChange={this.handlePasswordChange}
+                                    autoFocus
+                                />
+                            </FormControl>
+                            <Link to={this.state.redirect} id="redirect" name="redirect" style={{ textDecoration: 'none' }}>
                                 <Button
-                                    type="submit"
+                                    onClick={this.handleSubmit}
+                                    type='submit'
                                     fullWidth
-                                    variant="contained"
-                                    color="primary"
-                                    className="submit"
-                                >
-                                    Login 
-                                </Button>
-                                <br/>
-                                <br/>
-                                <div >
+                                    variant='contained'
+                                    color='primary'
+                                    className='submit'>
+                                    Login
+                                    </Button>
+                            </Link>
+                            <br />
+                            <br />
+                            <div >
                                 <Grid>
                                     <Grid item xs >
                                         <Link href="#" variant="body2">
                                             Forgot password?
                                         </Link>
                                     </Grid>
-                                    <br/>
+                                    <br />
                                     <Grid item xs >
                                         <Link href="#" variant="body2">
                                             {"Don't have an account? Sign Up"}
@@ -84,31 +85,37 @@ export default class Login extends React.Component{
                                     </Grid>
                                 </Grid>
 
-                                </div>
-                            </form>
-                        </Paper>
-                    </main>
-                </React.Fragment>
-            </div>
+                            </div>
+                        </form>
+                    </Paper>
+                </main>
+            </React.Fragment>
+
         );
     }
 
-    handleUserEmail(mail){
-        this.setState({email: mail.target.value});
+    handleEmailChange(e) {
+        this.setState({
+            email: e.target.value
+        });
     }
-    handleUserPassword(pass){
-        this.setState({password: pass.target.value});
+    handlePasswordChange(e) {
+        this.setState({
+            password: e.target.value
+        });
     }
 
-    handleSubmit(){
+    handleSubmit() {
         localStorage.setItem("email", 'andres@mail.com');
         localStorage.setItem("password", 'afqd');
-        if (localStorage.getItem("email") === this.state.email && localStorage.getItem("password") === this.state.password){
-            alert("Ingresó")
-            localStorage.setItem("isLoggedIn", true);
-            this.props.handleLogin();
-        }else{
+        if (this.state.email === localStorage.getItem('email') && this.state.password === localStorage.getItem('password')) {
+            alert("Ingresó Satisfactoriamente!!")
+            this.setState({ isLoggedIn: true })
+            window.location = "/tasks";
+        } else {
             alert("Datos Incorrectos!!")
+            window.location = "/"
+
         }
     }
 
