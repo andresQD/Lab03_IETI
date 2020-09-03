@@ -1,9 +1,11 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://taskplannerproject.herokuapp.com/)
+
+Despliegue en Azure: https://taskplanning.azurewebsites.net/
 # Credenciales:
 * email:andres@mail.com 
 * password: afqd
 
-Una vez realice el LogIn será redirigido a: https://taskplannerproject.herokuapp.com/tasks
+Una vez realice el LogIn será redirigido a: https://taskplannerproject.herokuapp.com/tasks ó https://taskplanning.azurewebsites.net/tasks
 
 
 
