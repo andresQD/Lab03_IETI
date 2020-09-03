@@ -60,7 +60,7 @@ export default class Login extends React.Component {
                             <Link to={this.state.redirect} id="redirect" name="redirect" style={{ textDecoration: 'none' }}>
                                 <Button
                                     onClick={this.handleSubmit}
-                                    type='submit'
+                                    type='button'
                                     fullWidth
                                     variant='contained'
                                     color='primary'
